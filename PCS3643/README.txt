@@ -1,1 +1,1 @@
-Esse README não tem utilidade porque não tem nada escrito =).
+Esse README não tem utilidade porque não tem nada escrito ;).
