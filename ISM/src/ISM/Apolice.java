@@ -18,7 +18,7 @@ public class Apolice {
 	int premio;
 	String informaçõesDaCorretora;
 	Veiculo veiculo;
-//	Cliente cliente;
+	Cliente cliente;
 	
 	public int getNumero() {
 		return numero;
@@ -99,12 +99,12 @@ public class Apolice {
 	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
 	}
-//	public Cliente getCliente() {
-//		return cliente;
-//	}
-//	public void setCliente(Cliente cliente) {
-//		this.cliente = cliente;
-//	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 	
 	public static Apolice construirApolice(ResultSet resultSet) {
 		Apolice apolice = new Apolice();
