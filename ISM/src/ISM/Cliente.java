@@ -9,12 +9,12 @@ public class Cliente {
 	char sexo;
 	int perfilDeUso;
 	
-	public Cliente(String cpf, String nome, char sexo, int perfil) {
+	public Cliente(String cpf, String nome, char sexo, int perfilDeUso) {
 		super();
 		this.cpf = cpf;
 		this.nome = nome;
 		this.sexo = sexo;
-		this.perfilDeUso = perfil;
+		this.perfilDeUso = perfilDeUso;
 	}
 	
 	public Cliente() {

@@ -20,6 +20,26 @@ public class Apolice {
 	Veiculo veiculo;
 	Cliente cliente;
 	
+	public Apolice(int numero, Date vigencia, int tipo, int modalidadeDeValor, int corretorResponsavel, int valorVeiculo, int valorAcessorios, 
+			String status, int franquiaCasco, int franquiaAcessorios, int premio) {
+		super();
+		this.numero = numero;
+		this.vigencia = vigencia;
+		this.tipo = tipo;
+		this.modalidadeDeValor = modalidadeDeValor;
+		this.corretorResponsavel = corretorResponsavel;
+		this.valorVeiculo = valorVeiculo;
+		this.valorAcessorios = valorAcessorios;
+		this.status = status;
+		this.franquiaCasco = franquiaCasco;
+		this.franquiaAcessorios = franquiaAcessorios;
+		this.premio = premio;
+	}
+	
+	public Apolice() {
+		super();
+	}
+	
 	public int getNumero() {
 		return numero;
 	}
