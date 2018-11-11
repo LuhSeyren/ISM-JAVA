@@ -8,12 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class ClienteDAO {
-	
+
 	private Connection connection;
-	
+
 	public ClienteDAO() {
 		Connection conn = null;
-		
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://143.107.102.7:3306/t1g7","t1g7","x$Hk_?rX");
@@ -24,17 +24,17 @@ public class ClienteDAO {
 		}
 		catch (SQLException e){
 			e.printStackTrace();
-		} 
+		}
 	}
-	
+
 	public ArrayList<Cliente> listarTodos() throws SQLException {
 		Statement statement = null;
 		ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
-		
+
 		try {
 			statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM Cliente");
-			
+
 			while(resultSet.next()){
 				Cliente cliente = Cliente.construirCliente(resultSet);
 				listaCliente.add(cliente);
@@ -43,14 +43,14 @@ public class ClienteDAO {
 		catch (SQLException e){
 			e.printStackTrace();
 		} finally {
-			
+
 		}
 		return listaCliente;
 	}
-	
-	public Cliente buscarVeiculo(String cpf) throws SQLException {
+
+	public Cliente buscarCliente(String cpf) throws SQLException {
 		Statement statement = null;
-		String query = "SELECT * FROM Veiculo WHERE Renavam=" + cpf;
+		String query = "SELECT * FROM Cliente WHERE CPF=" + cpf;
 		try {
 			statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
@@ -63,10 +63,10 @@ public class ClienteDAO {
 		}
 		return null;
 	}
-	
-	public Cliente registrarVeiculo(String[] informacoes) {
+
+	public Cliente registrarCliente(String[] informacoes) {
 		Statement statement = null;
-		String query = "INSERT INTO Veiculo (CPF,Nome,Sexo,PerfilDeUso) VALUES (\""
+		String query = "INSERT INTO Cliente (CPF,Nome,Sexo,PerfilDeUso) VALUES (\""
 				+ informacoes[0] + "\", \"" + informacoes[1] + "\", \""
 				+ informacoes[2] + "\", "   + informacoes[3] + ")";
 		try {
@@ -82,6 +82,5 @@ public class ClienteDAO {
 			e.printStackTrace();
 		}
 		return null;
-		
 	}
 }

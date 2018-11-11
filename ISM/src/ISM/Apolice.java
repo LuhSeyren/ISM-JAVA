@@ -16,11 +16,11 @@ public class Apolice {
 	int franquiaCasco;
 	int franquiaAcessorios;
 	int premio;
-	String informaçõesDaCorretora;
+	String informacoesDaCorretora;
 	Veiculo veiculo;
 	Cliente cliente;
-	
-	public Apolice(int numero, Date vigencia, int tipo, int modalidadeDeValor, int corretorResponsavel, int valorVeiculo, int valorAcessorios, 
+
+	public Apolice(int numero, Date vigencia, int tipo, int modalidadeDeValor, int corretorResponsavel, int valorVeiculo, int valorAcessorios,
 			String status, int franquiaCasco, int franquiaAcessorios, int premio) {
 		super();
 		this.numero = numero;
@@ -35,11 +35,11 @@ public class Apolice {
 		this.franquiaAcessorios = franquiaAcessorios;
 		this.premio = premio;
 	}
-	
+
 	public Apolice() {
 		super();
 	}
-	
+
 	public int getNumero() {
 		return numero;
 	}
@@ -106,13 +106,13 @@ public class Apolice {
 	public void setPremio(int premio) {
 		this.premio = premio;
 	}
-	public String getInformaçõesDaCorretora() {
-		return informaçõesDaCorretora;
+	public String getInformacoesDaCorretora() {
+		return informacoesDaCorretora;
 	}
-	public void setInformaçõesDaCorretora(String informaçõesDaCorretora) {
-		this.informaçõesDaCorretora = informaçõesDaCorretora;
+	public void setInformacoesDaCorretora(String informacoesDaCorretora) {
+		this.informacoesDaCorretora = informacoesDaCorretora;
 	}
-	
+
 	public Veiculo getVeiculo() {
 		return veiculo;
 	}
@@ -125,7 +125,7 @@ public class Apolice {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
+
 	public static Apolice construirApolice(ResultSet resultSet) {
 		Apolice apolice = new Apolice();
 		try {
@@ -139,11 +139,11 @@ public class Apolice {
 			apolice.setFranquiaCasco(resultSet.getInt("FranquiaCasco"));
 			apolice.setFranquiaAcessorios(resultSet.getInt("FranquiaAcessorios"));
 			apolice.setPremio(resultSet.getInt("Premio"));
-			apolice.setInformaçõesDaCorretora(resultSet.getString("InformacoesCorretora"));
+			apolice.setInformacoesDaCorretora(resultSet.getString("InformacoesCorretora"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return apolice;
 	}
-	
+
 }
