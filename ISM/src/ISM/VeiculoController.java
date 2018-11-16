@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class VeiculoController
  */
-@WebServlet("/VeiculoController")
+@WebServlet("/teste")
 public class VeiculoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

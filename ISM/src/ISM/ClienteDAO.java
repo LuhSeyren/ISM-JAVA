@@ -16,7 +16,8 @@ public class ClienteDAO {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://143.107.102.7:3306/t1g7","t1g7","x$Hk_?rX");
+			//conn = DriverManager.getConnection("jdbc:mysql://143.107.102.7:3306/t1g7","t1g7","x$Hk_?rX");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ISM","root","");
 			this.connection = conn;
 		}
 		catch (ClassNotFoundException e){
@@ -48,9 +49,9 @@ public class ClienteDAO {
 		return listaCliente;
 	}
 	
-	public Cliente buscarVeiculo(String cpf) throws SQLException {
+	public Cliente buscarCliente(String cpf){
 		Statement statement = null;
-		String query = "SELECT * FROM Veiculo WHERE Renavam=" + cpf;
+		String query = "SELECT * FROM Cliente WHERE CPF=" + cpf;
 		try {
 			statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
@@ -64,9 +65,9 @@ public class ClienteDAO {
 		return null;
 	}
 	
-	public Cliente registrarVeiculo(String[] informacoes) {
+	public Cliente registrarCliente(String[] informacoes) {
 		Statement statement = null;
-		String query = "INSERT INTO Veiculo (CPF,Nome,Sexo,PerfilDeUso) VALUES (\""
+		String query = "INSERT INTO Cliente (CPF,Nome,Sexo,PerfilDeUso) VALUES (\""
 				+ informacoes[0] + "\", \"" + informacoes[1] + "\", \""
 				+ informacoes[2] + "\", "   + informacoes[3] + ")";
 		try {
