@@ -16,7 +16,6 @@ public class ApoliceDAO {
 
 	public ApoliceDAO() {
 		Connection conn = null;
-
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://143.107.102.7:3306/t1g7","t1g7","x$Hk_?rX");
@@ -69,9 +68,9 @@ public class ApoliceDAO {
 
   public Apolice registrarApolice(String[] informacoes) {
 		Statement statement = null;
-		String query = "INSERT INTO Apolice (Numero,Vigencia,Tipo,ModalidadedeValor,ValorVeiculo,ValorAcessorios,"
-				+ "Status,FranquiaCasco,FraquiaAcessorios,Premio,InformacoesCorretora) VALUES ("
-				+ informacoes[0] + ", \"" + informacoes[1] + "\", "
+		String query = "INSERT INTO Apolice (Numero,Vigencia,Tipo,ModalidadeValor,ValorVeiculo,ValorAcessorios,"
+				+ "Status,FranquiaCasco,FranquiaAcessorios,Premio,InformacoesCorretora) VALUES ("
+				+ informacoes[0] + ", DATE(\"" + informacoes[1] + "\"), "
 				+ informacoes[2] + "," + informacoes[3] + ","
 				+ informacoes[4] + "," + informacoes[5] + ", \""
 				+ informacoes[6] + "\" ," + informacoes[7] + ","
@@ -81,7 +80,7 @@ public class ApoliceDAO {
 			statement.executeUpdate(query);
 			Apolice apolice = new Apolice();
 			apolice.setNumero(Integer.parseInt(informacoes[0]));
-			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 			try {
 				Date data = formato.parse(informacoes[1]);
 				apolice.setVigencia(data);
@@ -105,13 +104,13 @@ public class ApoliceDAO {
 		return null;
 	}
   
-  public ArrayList<Apolice> buscarPorData(String mes_inicial, String mes_final) throws SQLException {
+  public ArrayList<Apolice> buscarPorData(String data_inicial, String data_final) throws SQLException {
 		Statement statement = null;
 		ArrayList<Apolice> listaApolice = new ArrayList<Apolice>();
-
 		try {
 			statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Apolice WHERE MONTH(Vigencia) BETWEEN " + mes_inicial + " AND " + mes_final);
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM Apolice WHERE Vigencia BETWEEN DATE(\"" + data_inicial + 
+														 "\") AND DATE(\"" + data_final + "\")");
 
 			while(resultSet.next()){
 				Apolice apolice = Apolice.construirApolice(resultSet);
