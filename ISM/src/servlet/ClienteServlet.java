@@ -21,21 +21,13 @@ import ISM.ClienteDAO;
 @WebServlet("/ClienteServlet")
 public class ClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Cliente> listaCliente;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ClienteServlet() {
         super();
-        try {
-        	ClienteDAO clienteDAO = new ClienteDAO();
-        	this.listaCliente = clienteDAO.listarTodos();
-        }
-        catch (SQLException e){
-			e.printStackTrace();
-		}
-       
+      
     }
 
 	/**
@@ -56,8 +48,7 @@ public class ClienteServlet extends HttpServlet {
 				//Salvar Cliente na Sessão
 				HttpSession session = request.getSession();
 				session.setAttribute("cliente", cliente);
-				//setting session to expiry in 30 mins
-				session.setMaxInactiveInterval(30*60);
+				
 				
 				
 				request.setAttribute("cliente", cliente);
@@ -65,7 +56,7 @@ public class ClienteServlet extends HttpServlet {
 				requestDispatcher.forward(request, response);
 			}
 			else {
-				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/solicitarCliente.jsp");
+				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/solicitarDadosCliente.jsp");
 				requestDispatcher.forward(request, response);
 			}
 		}
@@ -89,8 +80,7 @@ public class ClienteServlet extends HttpServlet {
 		//Salvar Cliente na Sessão
 		HttpSession session = request.getSession();
 		session.setAttribute("cliente", cliente);
-		//setting session to expiry in 30 mins
-		session.setMaxInactiveInterval(30*60);
+		
 		
 		
 		request.setAttribute("cliente", cliente);

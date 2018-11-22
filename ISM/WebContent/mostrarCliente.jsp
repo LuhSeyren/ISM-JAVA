@@ -18,5 +18,12 @@
 	<h4> NOME: <%= cliente.getNome() %></h4>
 	<h4> SEXO: <%= cliente.getSexo() %></h4>
 	<h4> PERFIL DE USO: <%= cliente.getPerfilDeUso() %></h4>
+	
+	
+	<form action="ControleVenderApoliceServlet">
+		<input type="hidden" name="op"   value="veiculo" />
+	<input type="submit" value="proximo">
+	</form>
+	
 </body>
 </html>

@@ -4,16 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Soliciar Cliente</title>
+<title>Solicitar Cliente</title>
 </head>
 <body>
 
-<form action="ClienteServlet" method="get">
+
+<form action="ClienteServlet" method="post">
 
 CPF: <input type="text" name="cpf"><br>
+Nome: <input type="text" name="nome"><br>
+Sexo: <input type="text" name="sexo"><br>
+Perfil de Uso: <input type="text" name="perfilDeUso"><br>
 
-<input type="submit" value="buscar Cliente">
+<input type="submit" value="adicionar Cliente">
 </form>
+
 
 </body>
 </html>

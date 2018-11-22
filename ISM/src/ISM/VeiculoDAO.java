@@ -49,10 +49,11 @@ public class VeiculoDAO {
 		return listaVeiculos;
 	}
 	
-	public Veiculo buscarVeiculo(int renavam) throws SQLException {
+	public Veiculo buscarVeiculo(int renavam) {
 		Statement statement = null;
-		String query = "SELECT * FROM Veiculo WHERE Renavam=" + Integer.toString(renavam);
+		
 		try {
+			String query = "SELECT * FROM Veiculo WHERE Renavam=" + Integer.toString(renavam);
 			statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			while(resultSet.next()){
