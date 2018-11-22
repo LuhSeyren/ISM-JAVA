@@ -17,6 +17,7 @@ public class VeiculoDAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://143.107.102.7:3306/t1g7","t1g7","x$Hk_?rX");
+			//conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ISM","root","");
 			this.connection = conn;
 		}
 		catch (ClassNotFoundException e){
@@ -48,10 +49,11 @@ public class VeiculoDAO {
 		return listaVeiculos;
 	}
 	
-	public Veiculo buscarVeiculo(int renavam) throws SQLException {
+	public Veiculo buscarVeiculo(int renavam) {
 		Statement statement = null;
-		String query = "SELECT * FROM Veiculo WHERE Renavam=" + Integer.toString(renavam);
+		
 		try {
+			String query = "SELECT * FROM Veiculo WHERE Renavam=" + Integer.toString(renavam);
 			statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			while(resultSet.next()){

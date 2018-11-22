@@ -17,6 +17,7 @@ public class ClienteDAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://143.107.102.7:3306/t1g7","t1g7","x$Hk_?rX");
+			//conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ISM","root","");
 			this.connection = conn;
 		}
 		catch (ClassNotFoundException e){
@@ -47,11 +48,12 @@ public class ClienteDAO {
 		}
 		return listaCliente;
 	}
-
-	public Cliente buscarCliente(String cpf) throws SQLException {
+	
+	public Cliente buscarCliente(String cpf) {
 		Statement statement = null;
-		String query = "SELECT * FROM Cliente WHERE CPF=" + cpf;
+		
 		try {
+			String query = "SELECT * FROM Cliente WHERE CPF=" + cpf;
 			statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			while(resultSet.next()){
@@ -63,7 +65,7 @@ public class ClienteDAO {
 		}
 		return null;
 	}
-
+	
 	public Cliente registrarCliente(String[] informacoes) {
 		Statement statement = null;
 		String query = "INSERT INTO Cliente (CPF,Nome,Sexo,PerfilDeUso) VALUES (\""
