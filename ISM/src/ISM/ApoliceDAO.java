@@ -128,7 +128,7 @@ public class ApoliceDAO {
 			String numero = Integer.toString(apolice.getNumero());
 			String cpf = apolice.getCliente().getCpf();
 			String renavam = Integer.toString(apolice.getVeiculo().getRenavam());
-			statement.executeUpdate("INSERT INTO Corretor (Numero,CPF,Renavam,Matricula) VALUES ("+ numero + ",\"" + cpf + "\"," + renavam + "," + "1)");
+			statement.executeUpdate("INSERT INTO Contrato (Numero,CPF,Renavam,Matricula) VALUES ("+ numero + ",\"" + cpf + "\"," + renavam + ",1)");
 		}
 		catch (SQLException e){
 			e.printStackTrace();
