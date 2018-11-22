@@ -29,7 +29,6 @@ public class VeiculoController extends HttpServlet {
         try {
         	VeiculoDAO veiculoDAO = new VeiculoDAO();
         	this.listaVeiculo = veiculoDAO.listarTodos();
-        	ApoliceDAO apoliceDAO = new ApoliceDAO();
         }
         catch (SQLException e){
 			e.printStackTrace();
