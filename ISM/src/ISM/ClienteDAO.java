@@ -8,12 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class ClienteDAO {
-	
+
 	private Connection connection;
-	
+
 	public ClienteDAO() {
 		Connection conn = null;
-		
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://143.107.102.7:3306/t1g7","t1g7","x$Hk_?rX");
@@ -25,17 +25,17 @@ public class ClienteDAO {
 		}
 		catch (SQLException e){
 			e.printStackTrace();
-		} 
+		}
 	}
-	
+
 	public ArrayList<Cliente> listarTodos() throws SQLException {
 		Statement statement = null;
 		ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
-		
+
 		try {
 			statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM Cliente");
-			
+
 			while(resultSet.next()){
 				Cliente cliente = Cliente.construirCliente(resultSet);
 				listaCliente.add(cliente);
@@ -44,15 +44,16 @@ public class ClienteDAO {
 		catch (SQLException e){
 			e.printStackTrace();
 		} finally {
-			
+
 		}
 		return listaCliente;
 	}
 	
-	public Cliente buscarCliente(String cpf){
+	public Cliente buscarCliente(String cpf) {
 		Statement statement = null;
-		String query = "SELECT * FROM Cliente WHERE CPF=" + cpf;
+		
 		try {
+			String query = "SELECT * FROM Cliente WHERE CPF=" + cpf;
 			statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			while(resultSet.next()){
@@ -83,6 +84,5 @@ public class ClienteDAO {
 			e.printStackTrace();
 		}
 		return null;
-		
 	}
 }
