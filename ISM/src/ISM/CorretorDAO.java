@@ -55,7 +55,7 @@ public class CorretorDAO {
 			statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			while(resultSet.next()){
-				Corretor corretor = Corrteor.construirCorretor(resultSet);
+				Corretor corretor = Corretor.construirCorretor(resultSet);
 				return corretor;
 			}
 		} catch (SQLException e){
@@ -73,10 +73,10 @@ public class CorretorDAO {
 			statement = connection.createStatement();
 			statement.executeUpdate(query);
 			Corretor corretor = new Corretor();
-			corretor.setMatricula(Integer.parseInt(informacoes[0]))
+			corretor.setMatricula(Integer.parseInt(informacoes[0]));
 			corretor.setNome(informacoes[1]);
       corretor.setCpf(informacoes[2]);
-			return cliente;
+			return corretor;
 		} catch (SQLException e){
 			e.printStackTrace();
 		}

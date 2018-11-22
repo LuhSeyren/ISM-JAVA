@@ -2,7 +2,6 @@ package ISM;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 
 public class Corretor {
@@ -18,7 +17,7 @@ public class Corretor {
     super();
     this.matricula = matricula;
     this.nome = nome;
-    this.cpf = cpf;''
+    this.cpf = cpf;
   }
 
   public int getMatricula() {
@@ -36,7 +35,7 @@ public class Corretor {
   public String getCpf() {
     return cpf;
   }
-  public void setCpf() {
+  public void setCpf(String cpf) {
     this.cpf = cpf;
   }
 
