@@ -16,8 +16,8 @@ public class ClienteDAO {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			//conn = DriverManager.getConnection("jdbc:mysql://143.107.102.7:3306/t1g7","t1g7","x$Hk_?rX");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ISM","root","");
+			conn = DriverManager.getConnection("jdbc:mysql://143.107.102.7:3306/t1g7","t1g7","x$Hk_?rX");
+			//conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ISM","root","");
 			this.connection = conn;
 		}
 		catch (ClassNotFoundException e){
