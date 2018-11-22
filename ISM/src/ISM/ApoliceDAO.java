@@ -44,8 +44,6 @@ public class ApoliceDAO {
 		}
 		catch (SQLException e){
 			e.printStackTrace();
-		} finally {
-
 		}
 		return listaApolice;
 	}
@@ -109,8 +107,8 @@ public class ApoliceDAO {
 		ArrayList<Apolice> listaApolice = new ArrayList<Apolice>();
 		try {
 			statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM Apolice WHERE Vigencia BETWEEN DATE(\"" + data_inicial + 
-														 "\") AND DATE(\"" + data_final + "\")");
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM Apolice WHERE Vigencia BETWEEN DATE(\"" 
+					+ data_inicial + "\") AND DATE(\"" + data_final + "\")");
 
 			while(resultSet.next()){
 				Apolice apolice = Apolice.construirApolice(resultSet);
@@ -119,10 +117,22 @@ public class ApoliceDAO {
 		}
 		catch (SQLException e){
 			e.printStackTrace();
-		} finally {
-
 		}
 		return listaApolice;
 	}
+  
+  public void registrarContrato(Apolice apolice) throws SQLException {
+	  Statement statement = null;
+	  try {
+			statement = connection.createStatement();
+			String numero = Integer.toString(apolice.getNumero());
+			String cpf = apolice.getCliente().getCpf();
+			String renavam = Integer.toString(apolice.getVeiculo().getRenavam());
+			statement.executeUpdate("INSERT INTO Corretor (Numero,CPF,Renavam,Matricula) VALUES ("+ numero + ",\"" + cpf + "\"," + renavam + "," + "1)");
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+  }
 
 }
