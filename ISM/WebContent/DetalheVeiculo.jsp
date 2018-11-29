@@ -74,7 +74,7 @@
               </div>
             </div>
 
-			<input type="hidden" name="op" value="veiculo" />
+			<input type="hidden" name="op" value="apolice" />
 			<input class="btn btn-lg btn-info" type="submit" value="Continuar &raquo"></input>
           </form>
       </div>
