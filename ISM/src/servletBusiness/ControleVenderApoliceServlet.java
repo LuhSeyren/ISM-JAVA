@@ -1,4 +1,4 @@
-package servlet;
+package servletBusiness;
 
 import java.io.IOException;
 
@@ -108,7 +108,7 @@ public class ControleVenderApoliceServlet extends HttpServlet {
 		
 		double premioTotal = premioLiquido * 1.0738; //Acrescimo do IOF
 		
-		
+		apolice.setPremioLiquido((int)premioLiquido);
 		apolice.setPremio((int)(premioTotal));
 		
 		session.setAttribute("apolice", apolice);

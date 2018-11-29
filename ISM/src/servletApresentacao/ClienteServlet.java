@@ -1,4 +1,4 @@
-package servlet;
+package servletApresentacao;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DAO.ClienteDAO;
 import ISM.Cliente;
-import ISM.ClienteDAO;
 
 /**
  * Servlet implementation class ClienteServlet

@@ -16,6 +16,7 @@ public class Apolice {
 	int franquiaCasco;
 	int franquiaAcessorios;
 	int premio;
+	int premioLiquido;
 	String informacoesDaCorretora;
 	Veiculo veiculo;
 	Cliente cliente;
@@ -39,7 +40,13 @@ public class Apolice {
 	public Apolice() {
 		super();
 	}
-
+	
+	public int getPremioLiquido() {
+		return premioLiquido;
+	}
+	public void setPremioLiquido(int premioLiquido) {
+		this.premioLiquido = premioLiquido;
+	}
 	public int getNumero() {
 		return numero;
 	}

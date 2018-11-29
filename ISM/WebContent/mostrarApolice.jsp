@@ -19,7 +19,9 @@
 	<h4> Vigencia: <%= apolice.getVigencia() %></h4>
 	<h4> Franquia Casco: <%= apolice.getFranquiaCasco() %></h4>
 	<h4> Franquia Acessorios: <%= apolice.getFranquiaAcessorios() %></h4>
-	<h4> Premio: <%= apolice.getPremio() %></h4>
+	<h4> Premio Líquido: <%= apolice.getPremioLiquido() %></h4>
+	<h4> Premio Total: <%= apolice.getPremio() %></h4>
+	<h4>Valor Veiculo: <%= apolice.getValorVeiculo() %></h4>
 	
 	<form action="ApoliceServlet">
 		<input type="hidden" name="op"   value="confirma" />

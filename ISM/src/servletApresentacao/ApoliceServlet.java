@@ -1,4 +1,4 @@
-package servlet;
+package servletApresentacao;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DAO.ApoliceDAO;
+import DAO.CorretorDAO;
 import ISM.Apolice;
-import ISM.ApoliceDAO;
 import ISM.Corretor;
-import ISM.CorretorDAO;
 import ISM.TabelaFipe;
 import ISM.Veiculo;
 
