@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -74,6 +75,33 @@ public class ApoliceServlet extends HttpServlet {
 		informacoes[2] = request.getParameter("modalidadeValor");
 		informacoes[3] = request.getParameter("valorAcessorios");
 		informacoes[4] = request.getParameter("vigencia");
+		
+
+		if (informacoes[1].equals("Obrigatória")) {
+			informacoes[1] = "1";
+		} else if (informacoes[1].equals("Majorada")) {
+			informacoes[1] = "2";
+		} else {
+			informacoes[1] = "3";
+		}
+		if (informacoes[2].equals("Determinado")) {
+			informacoes[2] ="0";
+		} else {
+			informacoes[2] ="1";
+		}
+		Calendar cal = Calendar.getInstance();
+		Date today = cal.getTime();
+		if (informacoes[4].equals("1 Ano")) {
+			cal.add(Calendar.YEAR, 1);
+			Date nextYear = cal.getTime();
+			String newstring = new SimpleDateFormat("yyyy-MM-dd").format(nextYear);
+			informacoes[4] = newstring;
+		} else {
+			cal.add(Calendar.YEAR, 2);
+			Date nextYear = cal.getTime();
+			String newstring = new SimpleDateFormat("yyyy-MM-dd").format(nextYear);
+			informacoes[4] = newstring;
+		}
 		
 		Apolice apolice = new Apolice();
 		
