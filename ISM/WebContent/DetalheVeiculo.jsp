@@ -18,7 +18,7 @@
     <title>IMS - Gerar Apólice</title>
   </head>
   <body>
-  
+  <form action="ControleVenderApoliceServlet">
  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="#">Insurance Manager Software</a>
 
@@ -74,11 +74,13 @@
               </div>
             </div>
 
-			<input type="hidden" name="op" value="apolice" />
+
+			<input type="hidden" name="op"   value="apolice" />
 			<input class="btn btn-lg btn-info" type="submit" value="Continuar &raquo"></input>
           </form>
       </div>
     </main>
+    </form>
 
 
 
