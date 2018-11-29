@@ -68,6 +68,18 @@ public class ClienteDAO {
 	
 	public Cliente registrarCliente(String[] informacoes) {
 		Statement statement = null;
+		if (informacoes[2].equals("Masculino")) {
+			informacoes[2] = "M";
+		} else {
+			informacoes[2] = "F";
+		}
+		if (informacoes[3].equals("Trabalho")) {
+			informacoes[3]="1";
+		} else if (informacoes[3].equals("Lazer")) {
+			informacoes[3]="2";
+		} else {
+			informacoes[3]="3";
+		}
 		String query = "INSERT INTO Cliente (CPF,Nome,Sexo,PerfilDeUso) VALUES (\""
 				+ informacoes[0] + "\", \"" + informacoes[1] + "\", \""
 				+ informacoes[2] + "\", "   + informacoes[3] + ")";
