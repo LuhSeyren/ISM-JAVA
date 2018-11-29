@@ -19,6 +19,10 @@
 	<h4> MODELO: <%= veiculo.getModelo() %></h4>
 	<h4> ANO: <%= veiculo.getAno() %></h4>
 	<h4> COR: <%= veiculo.getCor() %></h4>
-
+	
+	<form action="ControleVenderApoliceServlet">
+		<input type="hidden" name="op"   value="apolice" />
+	<input type="submit" value="proximo">
+	</form>
 </body>
 </html>
