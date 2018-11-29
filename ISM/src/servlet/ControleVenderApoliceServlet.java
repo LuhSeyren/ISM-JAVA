@@ -40,6 +40,10 @@ public class ControleVenderApoliceServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/solicitarVeiculo.jsp");
 			requestDispatcher.forward(request, response);
 		}
+		else if(op.equals("apolice")){
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/solicitarCondicaoApolice.jsp");
+			requestDispatcher.forward(request, response);
+		}
 	}
 
 	/**
