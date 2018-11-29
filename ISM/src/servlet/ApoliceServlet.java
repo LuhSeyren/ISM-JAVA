@@ -14,6 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ISM.Apolice;
+import ISM.ApoliceDAO;
+import ISM.Corretor;
+import ISM.CorretorDAO;
+import ISM.TabelaFipe;
+import ISM.Veiculo;
 
 
 
@@ -41,8 +46,19 @@ public class ApoliceServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String op = request.getParameter("op");
+		
+		if (op.equals("veiculo")){
+			inserirValorVeiculo(request, response);
+		}else if (op.equals("confirma")){
+			confirmaApolice(request, response);
+		}else if (op.equals("rejeita")){
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaFalhaConfirmacao.jsp");
+			requestDispatcher.forward(request, response);
+		}
+		
+		
+		
 	}
 
 	/**
@@ -66,14 +82,29 @@ public class ApoliceServlet extends HttpServlet {
 		apolice.setValorAcessorios(Integer.valueOf(informacoes[3]));
 		apolice.setVigencia(convertDate(informacoes[4]));
 		
-		//Salvar Apolice na sessao
-		HttpSession session = request.getSession();
-		session.setAttribute("apolice", apolice);
+		
 		
 		
 		if(apolice.getModalidadeDeValor() == MODALIDADE_DETERMINADO){
+			//Salvar Apolice na sessao
+			HttpSession session = request.getSession();
+			session.setAttribute("apolice", apolice);
+			
+			
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/solicitarValorVeiculo.jsp");
 			requestDispatcher.forward(request, response);
+		}
+		else if(apolice.getModalidadeDeValor() == MODALIDADE_REFERENCIADO){
+			HttpSession session = request.getSession();
+			Veiculo veiculo = (Veiculo) session.getAttribute("veiculo");
+			
+			int valorVeiculo = TabelaFipe.buscarValorVeiculo(veiculo);
+			
+			apolice.setValorVeiculo(valorVeiculo);
+			
+			session.setAttribute("apolice", apolice);
+			
+			response.sendRedirect(request.getContextPath() + "/ControleVenderApoliceServlet?op=calcular");
 		}
 		
 		
@@ -89,6 +120,47 @@ public class ApoliceServlet extends HttpServlet {
 		}
 		
 		return date;
+		
+	}
+	
+	protected void inserirValorVeiculo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		//InserirValorVeiculo
+				int valorVeiculo = Integer.valueOf(request.getParameter("valor"));
+				
+				HttpSession session = request.getSession();
+				Apolice apolice = (Apolice) session.getAttribute("apolice");
+				
+				apolice.setValorVeiculo(valorVeiculo);
+				
+				session.setAttribute("apolice", apolice);
+				
+				//calcular_franquia no servlet ControleVenderApoliceServlet
+				response.sendRedirect(request.getContextPath() + "/ControleVenderApoliceServlet?op=calcular");
+	
+	}
+	
+	protected void confirmaApolice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		HttpSession session = request.getSession();
+		Apolice apolice = (Apolice) session.getAttribute("apolice");
+		
+		ApoliceDAO apoliceDAO = new ApoliceDAO();
+		int numeroApolice = apoliceDAO.gerarNumeroApolice();
+		apolice.setNumero(numeroApolice);
+		
+		CorretorDAO corretorDAO = new CorretorDAO();
+		Corretor corretor = corretorDAO.buscarCorretor(1);
+		int matricula = corretor.getMatricula();
+		apolice.setCorretorResponsavel(matricula);
+		
+		String infCorretora = "Informações da corretora.";
+		apolice.setInformacoesDaCorretora(infCorretora);
+		
+		apolice.setStatus("Pendente");
+		
+		apoliceDAO.registrarApolice(apolice);
+		
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaSucessoVenda.jsp");
+		requestDispatcher.forward(request, response);
 		
 	}
 

@@ -17,8 +17,18 @@
 	<h4> Modalidade de Valor: <%= apolice.getModalidadeDeValor() %></h4>
 	<h4> Valor dos Acessorios: <%= apolice.getValorAcessorios() %></h4>
 	<h4> Vigencia: <%= apolice.getVigencia() %></h4>
+	<h4> Franquia Casco: <%= apolice.getFranquiaCasco() %></h4>
+	<h4> Franquia Acessorios: <%= apolice.getFranquiaAcessorios() %></h4>
+	<h4> Premio: <%= apolice.getPremio() %></h4>
 	
-	
+	<form action="ApoliceServlet">
+		<input type="hidden" name="op"   value="confirma" />
+	<input type="submit" value="confirma">
+	</form>
+	<form action="ApoliceServlet">
+		<input type="hidden" name="op"   value="rejeita" />
+	<input type="submit" value="Não confirma">
+	</form>
 	
 	
 </body>

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -134,5 +135,67 @@ public class ApoliceDAO {
 			e.printStackTrace();
 		}
   }
+  
+  public int gerarNumeroApolice() {
+	  Statement statement = null;
+	  int m = 1;
+	  
+	  
+	  try{
+		  	statement = connection.createStatement();
+		  	ResultSet resultSet = statement.executeQuery("SELECT Numero FROM Apolice");
+		  	
+		  	
+		  	while(resultSet.next()){
+				  int numero = resultSet.getInt("Numero");
+				  if (numero != m)
+					  break;
+				  m++;
+				}
+		  	
+	  }catch (SQLException e){
+			e.printStackTrace();
+		}
+	  
+	  
+	  
+	  
+	  return m;
+  }
+  
+  public int registrarApolice(Apolice apolice) {
+	  String [] informacoes = new String[11];
+	  informacoes[0] = Integer.toString(apolice.getNumero());
+	  
+	  DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	  informacoes[1] = df.format(apolice.getVigencia());
+	  
+	  informacoes[2] = Integer.toString(apolice.getTipo());
+	  informacoes[3] = Integer.toString(apolice.getModalidadeDeValor());
+	  informacoes[4] = Integer.toString(apolice.getValorVeiculo());
+	  informacoes[5] = Integer.toString(apolice.getValorAcessorios());
+	  informacoes[6] = apolice.getStatus();
+	  informacoes[7] = Integer.toString(apolice.getFranquiaCasco());
+	  informacoes[8] = Integer.toString(apolice.getFranquiaAcessorios());
+	  informacoes[9] = Integer.toString(apolice.getPremio());
+	  informacoes[10] = apolice.getInformacoesDaCorretora();
+	  
+		Statement statement = null;
+		String query = "INSERT INTO Apolice (Numero,Vigencia,Tipo,ModalidadeValor,ValorVeiculo,ValorAcessorios,"
+				+ "Status,FranquiaCasco,FranquiaAcessorios,Premio,InformacoesCorretora) VALUES ("
+				+ informacoes[0] + ", DATE(\"" + informacoes[1] + "\"), "
+				+ informacoes[2] + "," + informacoes[3] + ","
+				+ informacoes[4] + "," + informacoes[5] + ", \""
+				+ informacoes[6] + "\" ," + informacoes[7] + ","
+				+ informacoes[8] + "," + informacoes[9] + ", \"" + informacoes[10] + "\")";
+		try {
+			statement = connection.createStatement();
+			statement.executeUpdate(query);
+			return 1;
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 }

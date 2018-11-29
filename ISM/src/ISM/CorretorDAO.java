@@ -48,10 +48,11 @@ public class CorretorDAO {
 		return listaCorretor;
 	}
 
-  public Corretor buscarCorretor(int matricula) throws SQLException {
+  public Corretor buscarCorretor(int matricula) {
 		Statement statement = null;
-		String query = "SELECT * FROM Corretor WHERE Matricula=" + Integer.toString(matricula);
+		
 		try {
+			String query = "SELECT * FROM Corretor WHERE Matricula=" + Integer.toString(matricula);
 			statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			while(resultSet.next()){
