@@ -53,14 +53,24 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="FranquiaTipo">Tipo da Franquia</label>
-                <h3><%= apolice.getTipo() %></h3>
+                <% if (apolice.getTipo()==1) {%>
+                <h3>Obrigatória</h3>
+                <% } else if (apolice.getTipo()==1) {%>
+                <h3>Majorada</h3>
+                <% } else { %>
+                <h3>Reduzida</h3>
+                <% } %>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="ModalidadeValor">Modalidade de Valor</label>
-                <h3><%= apolice.getModalidadeDeValor() %></h3>
+                <% if (apolice.getModalidadeDeValor()==0) {%>
+                <h3>Determinado</h3>
+                <% } else { %>
+                <h3>Referenciado</h3>
+                <% } %>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="VigenciaApolice">Vigência</label>
@@ -104,14 +114,14 @@
             
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="PremioTotal">Prêmio Total</label>
-                <h3><%= apolice.getPremio() %> </h3>
+                <label for="PremioTotal">Corretor Responsável</label>
+                <h3>Lucas Eugênio</h3>
               </div>
               <div class="col-md-6 mb-3">
               <p>Confirmar Registro da Apólice?</p>
              <select id="Confirmar" class="form-control">
-                <option selected>Recusar</option>
-                <option>Aceitar</option>
+                <option value="Recusar" selected>Recusar</option>
+                <option value="Aceitar">Aceitar</option>
               </select>
               </div>
             </div>
