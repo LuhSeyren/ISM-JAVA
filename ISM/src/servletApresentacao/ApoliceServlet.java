@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ISM.Apolice;
+import ISM.Cliente;
 import DAO.ApoliceDAO;
 import ISM.Corretor;
 import ISM.CorretorDAO;
@@ -167,6 +168,8 @@ public class ApoliceServlet extends HttpServlet {
 	
 	}
 	
+	
+	
 	protected void confirmaApolice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		HttpSession session = request.getSession();
 		Apolice apolice = (Apolice) session.getAttribute("apolice");
@@ -175,17 +178,27 @@ public class ApoliceServlet extends HttpServlet {
 		int numeroApolice = apoliceDAO.gerarNumeroApolice();
 		apolice.setNumero(numeroApolice);
 		
+		//set corretor
 		CorretorDAO corretorDAO = new CorretorDAO();
 		Corretor corretor = corretorDAO.buscarCorretor(1);
 		int matricula = corretor.getMatricula();
 		apolice.setCorretorResponsavel(matricula);
 		
+		//set corretora
 		String infCorretora = "Informações da corretora.";
 		apolice.setInformacoesDaCorretora(infCorretora);
 		
 		apolice.setStatus("Pendente");
 		
+		
+		//set Cliente e veiculo
+		Cliente cliente =  (Cliente) session.getAttribute("cliente");
+		apolice.setCliente(cliente);
+		Veiculo veiculo = (Veiculo) session.getAttribute("veiculo");
+		apolice.setVeiculo(veiculo);
+		
 		apoliceDAO.registrarApolice(apolice);
+		apoliceDAO.registrarContrato(apolice);
 		
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaSucessoVenda.jsp");
 		requestDispatcher.forward(request, response);

@@ -124,7 +124,7 @@ public class ApoliceDAO {
 		return listaApolice;
 	}
   
-  public void registrarContrato(Apolice apolice) throws SQLException {
+  public void registrarContrato(Apolice apolice) {
 	  Statement statement = null;
 	  try {
 			statement = connection.createStatement();
