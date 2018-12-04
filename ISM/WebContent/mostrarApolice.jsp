@@ -86,11 +86,27 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="ValorAcessorio">Valor dos Acessórios</label>
-                <h3> <%= apolice.getValorAcessorios() %> </h3>
+                <% String valorAcessorios = Integer.toString(apolice.getValorAcessorios());
+                   String valorAcessoriosFormat = "";
+                   while (valorAcessorios.length() > 3) {
+                   		int length = valorAcessorios.length(); 
+                   		String valor = valorAcessorios.substring(length - 3, length);
+                   		valorAcessoriosFormat = valorAcessoriosFormat + "." + valor;
+                   		valorAcessorios = valorAcessorios.substring (0, length - 3);
+                   } %>
+                <h3> <%= "R$ " + valorAcessorios + valorAcessoriosFormat + ",00" %> </h3>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="ValorVeiculo">Valor do Veículo</label>
-                <h3><%= apolice.getValorVeiculo() %></h3>
+                <% String valorVeiculo = Integer.toString(apolice.getValorVeiculo());
+                   String valorVeiculoFormat = "";
+                   while (valorVeiculo.length() > 3) {
+                   		int length = valorVeiculo.length(); 
+                   		String valor = valorVeiculo.substring(length - 3, length);
+                   		valorVeiculoFormat = valorVeiculoFormat + "." + valor;
+                   		valorVeiculo = valorVeiculo.substring (0, length - 3);
+                   } %>
+                <h3> <%= "R$ " + valorVeiculo + valorVeiculoFormat + ",00" %> </h3>
               </div>
             </div>
 
@@ -140,13 +156,13 @@
               <div class="col-md-6 mb-3">
                <form action="ApoliceServlet">
                <input type="hidden" name="op"   value="confirma" />
-               <input class="btn-block btn-success" type="submit" value="Confirmar"></input>
+               <input class="btn-block btn-info" type="submit" value="Confirmar"></input>
                </form>
               </div>
               <div class="col-md-6 mb-3">
                <form action="ApoliceServlet">
 			   <input type="hidden" name="op"   value="rejeita" />
-		       <input class="btn-block btn-danger" type="submit" value="Recusar"></input>
+		       <input class="btn-block btn-default" type="submit" value="Recusar"></input>
 			   </form>
               </div>
             </div>
