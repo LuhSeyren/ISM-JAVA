@@ -51,7 +51,7 @@ public class ApoliceDAO {
 		return listaApolice;
 	}
 
-  public Apolice buscarApolice(int matricula) throws SQLException {
+  public Apolice buscarApolice(int matricula) {
 		Statement statement = null;
 		String query = "SELECT * FROM Apolice WHERE Numero=" + Integer.toString(matricula);
 		try {
@@ -199,5 +199,19 @@ public class ApoliceDAO {
 		}
 		return 0;
 	}
+  
+  public int alterarStatusApolice(Apolice apolice, String status) {
+	  Statement statement = null;
+	  try {
+			statement = connection.createStatement();
+			String numero = Integer.toString(apolice.getNumero());
+			statement.executeUpdate("UPDATE Apolice SET Status = \"" + status + "\" WHERE Numero =" + numero +";") ;
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+	  return 0;
+	  
+  }
 
 }

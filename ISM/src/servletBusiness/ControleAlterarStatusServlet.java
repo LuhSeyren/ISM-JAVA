@@ -1,6 +1,8 @@
 package servletBusiness;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.ApoliceDAO;
+import ISM.Apolice;
 
 /**
  * Servlet implementation class ControleAlterarStatusServlet
@@ -17,6 +21,8 @@ import DAO.ApoliceDAO;
 @WebServlet("/ControleAlterarStatusServlet")
 public class ControleAlterarStatusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private int OK = 1;
+	private int ERROR = 0;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -48,13 +54,67 @@ public class ControleAlterarStatusServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		//novo status enviado
+		String status  = request.getParameter("status");
+		
+		HttpSession session = request.getSession();
+		Apolice apolice = (Apolice) session.getAttribute("apolice");
+		
+		if(verificarConsistenciaStatus(apolice, status) == false){
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaAlterarStatus/statusInconsistente.jsp");
+			requestDispatcher.forward(request, response);
+		}
+		
+		
+		apolice.setStatus(status);
+		ApoliceDAO apoliceDAO = new ApoliceDAO();
+		
+		apoliceDAO.alterarStatusApolice(apolice, status);
+		
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaAlterarStatus/alteracaoSucesso.jsp");
+		requestDispatcher.forward(request, response);
 	}
 	
 	protected void mostrarStatusApolice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ApoliceDAO apoliceDao = 
+		ApoliceDAO apoliceDAO = new ApoliceDAO();
+		
+		int numeroApolice = Integer.valueOf(request.getParameter("numeroApolice"));
+		
+		Apolice apolice = apoliceDAO.buscarApolice(numeroApolice);
+		
+		if (apolice == null){
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaAlterarStatus/apoliceNaoEncontrada.jsp");
+			requestDispatcher.forward(request, response);
+		}
+		
+		HttpSession session = request.getSession();
+		//setting session to expiry in 30 mins
+		session.setMaxInactiveInterval(30*60);
+		
+		session.setAttribute("apolice", apolice);
+		
+		request.setAttribute("apolice", apolice);
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaAlterarStatus/mostrarStatusApolice.jsp");
+		requestDispatcher.forward(request, response);
+		
 	
+	}
+	
+	private boolean verificarConsistenciaStatus(Apolice apolice, String status){
+		if(status.equals("Ativo")){
+			Calendar cal = Calendar.getInstance();
+			Date today = cal.getTime();
+			
+			Date vigencia = apolice.getVigencia();
+			
+			if(today.after(vigencia))
+				return false;
+			else
+				return true;
+		}if(status.equals("Pendente") | status.equals("Inativo")){
+			return true;
+		}else
+			return false;
 	}
 
 }
