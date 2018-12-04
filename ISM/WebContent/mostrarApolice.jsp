@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>
     <%@ page import = "java.util.*" %>
 <%@ page import = "ISM.Apolice" %>
+<%@ page import = "java.text.SimpleDateFormat" %>
+<%@ page import = "java.text.DateFormat" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!doctype html>
@@ -45,7 +47,6 @@
 
 
         <div class="col-md-8 order-md-1">
-          <form class="needs-validation" novalidate>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="tipoapolice">Tipo de Apólice</label>
@@ -55,7 +56,7 @@
                 <label for="FranquiaTipo">Tipo da Franquia</label>
                 <% if (apolice.getTipo()==1) {%>
                 <h3>Obrigatória</h3>
-                <% } else if (apolice.getTipo()==1) {%>
+                <% } else if (apolice.getTipo()==2) {%>
                 <h3>Majorada</h3>
                 <% } else { %>
                 <h3>Reduzida</h3>
@@ -74,7 +75,10 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="VigenciaApolice">Vigência</label>
-                <h3><%= apolice.getVigencia() %></h3>
+                <% DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                   String data_vigencia = df.format(apolice.getVigencia());
+                 %>
+                <h3> <%= data_vigencia %> </h3>
               </div>
             </div>
 
@@ -86,7 +90,7 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="ValorVeiculo">Valor do Veículo</label>
-                <h3><%= apolice.getValorAcessorios() %></h3>
+                <h3><%= apolice.getValorVeiculo() %></h3>
               </div>
             </div>
 
@@ -118,16 +122,35 @@
                 <h3>Lucas Eugênio</h3>
               </div>
               <div class="col-md-6 mb-3">
-              <p>Confirmar Registro da Apólice?</p>
-             <select id="Confirmar" class="form-control">
-                <option value="Recusar" selected>Recusar</option>
-                <option value="Aceitar">Aceitar</option>
-              </select>
+              <p>Informações Da Corretora</p>
+              <% if (apolice.getInformacoesDaCorretora() != null) { %>
+              	<h3> <%= apolice.getInformacoesDaCorretora() %></h3>
+              <% } else { %>
+              	<h3> - </h3>
+              <% } %>
               </div>
             </div>
 
-            <button class="btn btn-primary btn-lg btn-block" href="../6A - Tela de Sucesso/telasucessoapolice.html" type="submit">Enviar Dados da Apólice</button>
-          </form>
+			<div class="row">
+            	<div class="col-md-6 mb-3">
+                <label for="Confirmação">Deseja Confirmar a Operação?</label>
+              </div>
+            </div>
+			<div class="row">
+              <div class="col-md-6 mb-3">
+               <form action="ApoliceServlet">
+               <input type="hidden" name="op"   value="confirma" />
+               <input class="btn-block btn-success" type="submit" value="Confirmar"></input>
+               </form>
+              </div>
+              <div class="col-md-6 mb-3">
+               <form action="ApoliceServlet">
+			   <input type="hidden" name="op"   value="rejeita" />
+		       <input class="btn-block btn-danger" type="submit" value="Recusar"></input>
+			   </form>
+              </div>
+            </div>
+            
       </div>
     </main>
 
