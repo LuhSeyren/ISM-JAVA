@@ -17,7 +17,7 @@
 <% for(Iterator iterator = apoliceList.iterator(); iterator.hasNext();) { %>
  	<% Apolice apolice = (Apolice) iterator.next();%>
     <TR>Número Apolice: <%= apolice.getNumero() %></TR>
-    <TR>Nome: <%= apolice.getValorVeiculo() %></TR>
+    <TR>ValorVeículo: <%= apolice.getValorVeiculo() %></TR>
     
     <br>
     <% } %>

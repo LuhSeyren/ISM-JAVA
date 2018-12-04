@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,10 +8,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="starter-template.css" rel="stylesheet">
+    <link href="cover.css" rel="stylesheet">
 
-    <title>IMS - Gerar Apólice</title>
+    <title>IMS - Gerar Relatório</title>
   </head>
-  <body>
+
+
+  <body class="text-center">
 
 
  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -21,35 +22,38 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Venda </a>
+          <li class="nav-item">
+            <a class="nav-link" href="1-venderApolice/1A - cliente/cliente.html">Venda </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Alteração <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="2-alterarApolice/1-status/site.html">Alteração <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Relatório</a>
+            <a class="nav-link" href="3-gerarRelatorio/1-periodo/site.html">Relatório</a>
           </li>
         </ul>
       </div>
     </nav>
 
 
-     <main role="main" class="container">
-      <div class="jumbotron">
-        <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Meus Parabéns!!!</h1>
-          <p class="lead text-muted">Você gerou uma nova Apólice com Sucesso!</p>
-          <p class="lead text-muted">Um dos nossos Corretores irá ativá-la após o confirmação de pagamento.</p>
-          <p>
-            <a href="#" class="btn btn-primary my-2">Voltar ao Menu Inicial</a>
-            <a href="#" class="btn btn-secondary my-2">Gerar nova Apólice</a>
-          </p>
+
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Insurance Manager Software</h1>
+        <p class="lead">O seu software favorito para gerenciar os seus seguros. Nunca antes ser organizado foi tão fácil.</p>
+        <p class="lead">
+          <a href="1-venderApolice/1A - cliente/cliente.html" class="btn btn-lg btn-secondary">Inicie uma Venda agora mesmo</a>
+        </p>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template by <a href="#">Toshi & Eugênio</a>.</p>
         </div>
-      </section>
-      </div>
-    </main>
+      </footer>
+    </div>
 
 
 
