@@ -111,6 +111,8 @@ public class ControleVenderApoliceServlet extends HttpServlet {
 		apolice.setPremioLiquido((int)premioLiquido);
 		apolice.setPremio((int)(premioTotal));
 		
+		
+		//Armazenar Apólice
 		session.setAttribute("apolice", apolice);
 		
 		request.setAttribute("apolice", apolice);
