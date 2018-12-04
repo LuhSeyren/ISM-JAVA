@@ -39,7 +39,7 @@
       <div class="jumbotron">
         <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Apólice Recusada :(</h1>
+          <h1 class="jumbotron-heading">Apólice Recusada! =(</h1>
           <p class="lead text-muted">Você recusou os Termos da Apólice.</p>
           <p class="lead text-muted">Esperamos que você possa ser nosso cliente em breve! =)</p>
           <p>
