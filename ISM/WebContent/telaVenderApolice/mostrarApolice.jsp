@@ -113,22 +113,54 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="FranquiaCasco">Franquia de Casco</label>
-                <h3> <%= apolice.getFranquiaCasco() %> </h3>
+                 <% String franquiaCasco = Integer.toString(apolice.getFranquiaCasco());
+                   String franquiaCascoFormat = "";
+                   while (franquiaCasco.length() > 3) {
+                   		int length = franquiaCasco.length(); 
+                   		String valor = franquiaCasco.substring(length - 3, length);
+                   		franquiaCascoFormat = franquiaCascoFormat + "." + valor;
+                   		franquiaCasco = franquiaCasco.substring (0, length - 3);
+                   } %>
+                <h3> <%= "R$ " + franquiaCasco + franquiaCascoFormat + ",00" %> </h3>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="FranquiaAcessorio">Franquia de Acessórios</label>
-                <h3> <%= apolice.getFranquiaAcessorios() %> </h3>
+                <% String franquiaAcessorios = Integer.toString(apolice.getFranquiaAcessorios());
+                   String franquiaAcessoriosFormat = "";
+                   while (franquiaAcessorios.length() > 3) {
+                   		int length = franquiaAcessorios.length(); 
+                   		String valor = franquiaAcessorios.substring(length - 3, length);
+                   		franquiaAcessoriosFormat = franquiaAcessoriosFormat + "." + valor;
+                   		franquiaAcessorios = franquiaAcessorios.substring (0, length - 3);
+                   } %>
+                <h3> <%= "R$ " + franquiaAcessorios + franquiaAcessoriosFormat + ",00" %> </h3>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="PremioTotal">Prêmio Líquido</label>
-                <h3><%= apolice.getPremio() %> </h3>
+                <% String premioLiquido = Integer.toString(apolice.getPremioLiquido());
+                   String premioLiquidoFormat = "";
+                   while (premioLiquido.length() > 3) {
+                   		int length = premioLiquido.length(); 
+                   		String valor = premioLiquido.substring(length - 3, length);
+                   		premioLiquidoFormat = premioLiquidoFormat + "." + valor;
+                   		premioLiquido = premioLiquido.substring (0, length - 3);
+                   } %>
+                <h3> <%= "R$ " + premioLiquido + premioLiquidoFormat + ",00" %> </h3>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="PremioTotal">Prêmio Total</label>
-                <h3><%= apolice.getPremioLiquido() %> </h3>
+                <% String premio = Integer.toString(apolice.getPremio());
+                   String premioFormat = "";
+                   while (premio.length() > 3) {
+                   		int length = premio.length(); 
+                   		String valor = premio.substring(length - 3, length);
+                   		premioFormat = premioFormat + "." + valor;
+                   		premio = premio.substring (0, length - 3);
+                   } %>
+                <h3> <%= "R$ " + premio + premioFormat + ",00" %> </h3>
               </div>
             </div>
             
