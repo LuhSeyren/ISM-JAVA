@@ -105,7 +105,7 @@ public class ApoliceDAO {
 		return null;
 	}
   
-  public ArrayList<Apolice> buscarPorData(String data_inicial, String data_final) throws SQLException {
+  public ArrayList<Apolice> buscarPorData(String data_inicial, String data_final) {
 		Statement statement = null;
 		ArrayList<Apolice> listaApolice = new ArrayList<Apolice>();
 		try {

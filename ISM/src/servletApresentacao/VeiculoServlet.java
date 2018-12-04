@@ -66,7 +66,7 @@ public class VeiculoServlet extends HttpServlet {
 		
 		
 		request.setAttribute("veiculo", veiculo);
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/DetalheVeiculo.jsp");
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaVenderApolice/DetalheVeiculo.jsp");
 		requestDispatcher.forward(request, response);
 	}
 

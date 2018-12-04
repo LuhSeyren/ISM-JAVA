@@ -42,11 +42,11 @@ public class ControleVenderApoliceServlet extends HttpServlet {
 			inicioVenda(request, response);
 		}
 		else if(op.equals("veiculo")){
-			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/solicitarVeiculo.jsp");
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaVenderApolice/solicitarVeiculo.jsp");
 			requestDispatcher.forward(request, response);
 		}
 		else if(op.equals("apolice")){
-			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/solicitarCondicaoApolice.jsp");
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaVenderApolice/solicitarCondicaoApolice.jsp");
 			requestDispatcher.forward(request, response);
 		}
 		else if (op.equals("calcular")){
@@ -69,7 +69,7 @@ public class ControleVenderApoliceServlet extends HttpServlet {
 		//setting session to expiry in 30 mins
 		session.setMaxInactiveInterval(30*60);
 		
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/solicitarCliente.jsp");
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaVenderApolice/solicitarCliente.jsp");
 		requestDispatcher.forward(request, response);
 	}
 	
@@ -116,7 +116,7 @@ public class ControleVenderApoliceServlet extends HttpServlet {
 		session.setAttribute("apolice", apolice);
 		
 		request.setAttribute("apolice", apolice);
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/mostrarApolice.jsp");
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaVenderApolice/mostrarApolice.jsp");
 		requestDispatcher.forward(request, response);
 		
 	}

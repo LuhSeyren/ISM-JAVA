@@ -50,11 +50,11 @@ public class ClienteServlet extends HttpServlet {
 				
 				
 				request.setAttribute("cliente", cliente);
-				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/mostrarCliente.jsp");
+				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaVenderApolice/mostrarCliente.jsp");
 				requestDispatcher.forward(request, response);
 			}
 			else {
-				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/solicitarDadosCliente.jsp");
+				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaVenderApolice/solicitarDadosCliente.jsp");
 				requestDispatcher.forward(request, response);
 			}
 		}
@@ -83,7 +83,7 @@ public class ClienteServlet extends HttpServlet {
 		
 		
 		request.setAttribute("cliente", cliente);
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/mostrarCliente.jsp");
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaVenderApolice/mostrarCliente.jsp");
 		requestDispatcher.forward(request, response);
 		
 		

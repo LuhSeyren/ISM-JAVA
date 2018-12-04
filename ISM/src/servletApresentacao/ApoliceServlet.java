@@ -18,7 +18,7 @@ import ISM.Apolice;
 import ISM.Cliente;
 import DAO.ApoliceDAO;
 import ISM.Corretor;
-import ISM.CorretorDAO;
+import DAO.CorretorDAO;
 import ISM.TabelaFipe;
 import ISM.Veiculo;
 
@@ -55,7 +55,7 @@ public class ApoliceServlet extends HttpServlet {
 		}else if (op.equals("confirma")){
 			confirmaApolice(request, response);
 		}else if (op.equals("rejeita")){
-			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaFalhaConfirmacao.jsp");
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaVenderApolice/telaFalhaConfirmacao.jsp");
 			requestDispatcher.forward(request, response);
 		}
 		
@@ -120,7 +120,7 @@ public class ApoliceServlet extends HttpServlet {
 			session.setAttribute("apolice", apolice);
 			
 			
-			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/solicitarValorVeiculo.jsp");
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaVenderApolice/solicitarValorVeiculo.jsp");
 			requestDispatcher.forward(request, response);
 		}
 		else if(apolice.getModalidadeDeValor() == MODALIDADE_REFERENCIADO){
@@ -200,7 +200,7 @@ public class ApoliceServlet extends HttpServlet {
 		apoliceDAO.registrarApolice(apolice);
 		apoliceDAO.registrarContrato(apolice);
 		
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaSucessoVenda.jsp");
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaVenderApolice/telaSucessoVenda.jsp");
 		requestDispatcher.forward(request, response);
 		
 	}
