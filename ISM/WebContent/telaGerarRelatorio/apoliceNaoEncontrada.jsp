@@ -38,7 +38,7 @@
         <section class="jumbotron text-center">
         <div class="container">
           <h1 class="jumbotron-heading">Apólices Não Encontradas! =(</h1>
-          <p class="lead text-muted">Não foram encontradas, em nosso Banco de Dados, Apólices com os Requisitos Informados. Talvez as Datas Inseridas não estejam corretos.</p>
+          <p class="lead text-muted">Não foram encontradas, em nosso Banco de Dados, Apólices com os Requisitos Informados. Talvez as Datas de Início e Fim não estejam corretas.</p>
         </div>
       </section>
       </div>

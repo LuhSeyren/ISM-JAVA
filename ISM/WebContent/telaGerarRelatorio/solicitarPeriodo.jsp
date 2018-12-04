@@ -44,7 +44,7 @@
           </div>
           <div class="col">
             <h4>Data Final</h4>
-            <input name="data_final" class="form-control" type="date" value="Data de Início" id="example-date-input">
+            <input name="data_final" class="form-control" type="date" value="Data de Fim" id="example-date-input">
           </div>
 
         </div>
