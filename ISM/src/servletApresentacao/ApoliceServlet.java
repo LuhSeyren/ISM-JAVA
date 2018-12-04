@@ -18,7 +18,7 @@ import ISM.Apolice;
 import ISM.Cliente;
 import DAO.ApoliceDAO;
 import ISM.Corretor;
-import ISM.CorretorDAO;
+import DAO.CorretorDAO;
 import ISM.TabelaFipe;
 import ISM.Veiculo;
 
