@@ -63,6 +63,7 @@ public class ControleAlterarStatusServlet extends HttpServlet {
 		if(verificarConsistenciaStatus(apolice, status) == false){
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaAlterarStatus/statusInconsistente.jsp");
 			requestDispatcher.forward(request, response);
+			return;
 		}
 		
 		
@@ -111,7 +112,18 @@ public class ControleAlterarStatusServlet extends HttpServlet {
 				return false;
 			else
 				return true;
-		}if(status.equals("Pendente") | status.equals("Inativo")){
+		}if(status.equals("Vencido")){
+			Calendar cal = Calendar.getInstance();
+			Date today = cal.getTime();
+			
+			Date vigencia = apolice.getVigencia();
+			
+			if(today.before(vigencia))
+				return false;
+			else
+				return true;
+		}
+		if(status.equals("Pendente") | status.equals("Inativo") | status.equals("Cancelado") ){
 			return true;
 		}else
 			return false;
