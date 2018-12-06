@@ -42,15 +42,17 @@
 
       <main role="main" class="inner cover">
         <h1 class="cover-heading">Insurance Manager Software</h1>
-        <p class="lead">O seu software favorito para gerenciar os seus seguros. Nunca antes ser organizado foi tão fácil.</p>
+        <br><br>
+        <p class="lead">O Seu Software Favorito Para Gerenciar os Seus Seguros.</p>
+        <p class="lead">Nunca Foi Tão Fácil Ser Organizado!</p>
         <p class="lead">
-          <a href="ControleVenderApoliceServlet?op=venda" class="btn btn-lg btn-secondary">Inicie uma Venda agora mesmo</a>
+          <a href="ControleVenderApoliceServlet?op=venda" class="btn btn-lg btn-secondary">Inicie Uma Venda Agora Mesmo</a>
         </p>
       </main>
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Cover template by <a href="#">Toshi & Eugênio</a>.</p>
+          <p>Desenvolvido Por: <a target=blank href="https://github.com/LuhSeyren/ISM-JAVA/tree/DAO_creation">Toshi & Eugênio</a>.</p>
         </div>
       </footer>
     </div>
