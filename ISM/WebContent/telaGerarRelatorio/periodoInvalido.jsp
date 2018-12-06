@@ -15,23 +15,21 @@
    
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="/../../home.html">Insurance Manager Software</a>
-
+    <a class="navbar-brand" href="/ISM/home.jsp">Insurance Manager Software</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="../../1-venderApolice/1A-cliente/cliente.html">Venda </a>
+            <a class="nav-link" href="ControleVenderApoliceServlet?op=venda">Venda</a>
           </li>
-          <li class="nav-iteme">
-            <a class="nav-link" href="../../2-alterarApolice/1-status/site.html">Alteração <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="ControleAlterarStatusServlet?op=status">Alteração</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="../../3-gerarRelatorio/1-periodo/site.html">Relatório</a>
+            <a class="nav-link" href="ControleGerarRelatorioServlet?op=relatorio">Relatório</a>
           </li>
         </ul>
       </div>
     </nav>
-
 
      <main role="main" class="container">
       <div class="jumbotron">
@@ -39,6 +37,10 @@
         <div class="container">
           <h1 class="jumbotron-heading">Desculpe, Algo Deu Errado! =(</h1>
           <p class="lead text-muted">Encontramos algum problema na Busca pelas Apólices. Provavelmente, a Data Informada não era válida. Por favor, refaça a Busca informando corretamente a Data de Início e Fim.</p>
+          <p>
+            <a href="/ISM/home.jsp" class="btn btn-primary my-2">Voltar para Home</a>
+            <a href="ControleGerarRelatorioServlet?op=relatorio" class="btn btn-secondary my-2">Gerar novo Relatório</a>
+          </p>
         </div>
       </section>
       </div>

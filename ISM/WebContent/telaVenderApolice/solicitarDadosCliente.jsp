@@ -19,19 +19,18 @@
 
 	<form action="ClienteServlet" method="post">
 	
- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Insurance Manager Software</a>
-
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/ISM/home.jsp">Insurance Manager Software</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Venda </a>
+            <a class="nav-link" href="ControleVenderApoliceServlet?op=venda">Venda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Alteração <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="ControleAlterarStatusServlet?op=status">Alteração</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Relatório</a>
+            <a class="nav-link" href="ControleGerarRelatorioServlet?op=relatorio">Relatório</a>
           </li>
         </ul>
       </div>
@@ -62,7 +61,7 @@
             <option value="Ambos"> Ambos </option>
           </select>
         </div>
-        <input class="btn btn-info" type="submit" value="Enviar &raquo"></input>
+        <input class="btn btn-primary" type="submit" value="Enviar &raquo"></input>
       </div>
       </form>
     </main>

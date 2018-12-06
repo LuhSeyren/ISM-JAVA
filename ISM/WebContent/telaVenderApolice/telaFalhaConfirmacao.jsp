@@ -17,18 +17,17 @@
 
 
  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Insurance Manager Software</a>
-
+    <a class="navbar-brand" href="/ISM/home.jsp">Insurance Manager Software</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Venda </a>
+            <a class="nav-link" href="ControleVenderApoliceServlet?op=venda">Venda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Alteração <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="ControleAlterarStatusServlet?op=status">Alteração</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Relatório</a>
+            <a class="nav-link" href="ControleGerarRelatorioServlet?op=relatorio">Relatório</a>
           </li>
         </ul>
       </div>
@@ -43,8 +42,8 @@
           <p class="lead text-muted">Você recusou os Termos da Apólice.</p>
           <p class="lead text-muted">Esperamos que você possa ser nosso cliente em breve! =)</p>
           <p>
-            <a href="#" class="btn btn-primary my-2">Voltar ao Menu Inicial</a>
-            <a href="#" class="btn btn-secondary my-2">Gerar nova Apólice</a>
+            <a href="/ISM/home.jsp" class="btn btn-primary my-2">Voltar para Home</a>
+            <a href="ControleVenderApoliceServlet?op=venda" class="btn btn-secondary my-2">Gerar nova Apólice</a>
           </p>
         </div>
       </section>

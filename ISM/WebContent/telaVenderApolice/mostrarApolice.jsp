@@ -23,23 +23,21 @@
 <% Apolice apolice = (Apolice) request.getAttribute("apolice"); %>
 
  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Insurance Manager Software</a>
-
+    <a class="navbar-brand" href="/ISM/home.jsp">Insurance Manager Software</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Venda </a>
+            <a class="nav-link" href="ControleVenderApoliceServlet?op=venda">Venda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Alteração <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="ControleAlterarStatusServlet?op=status">Alteração</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Relatório</a>
+            <a class="nav-link" href="ControleGerarRelatorioServlet?op=relatorio">Relatório</a>
           </li>
         </ul>
       </div>
     </nav>
-
 
      <main role="main" class="container">
       <div class="jumbotron">
@@ -188,13 +186,13 @@
               <div class="col-md-6 mb-3">
                <form action="ApoliceServlet">
                <input type="hidden" name="op"   value="confirma" />
-               <input class="btn-block btn-info" type="submit" value="Confirmar"></input>
+               <input class="btn-block btn-primary" type="submit" value="Confirmar"></input>
                </form>
               </div>
               <div class="col-md-6 mb-3">
                <form action="ApoliceServlet">
 			   <input type="hidden" name="op"   value="rejeita" />
-		       <input class="btn-block btn-default" type="submit" value="Recusar"></input>
+		       <input class="btn-block btn-secondary" type="submit" value="Recusar"></input>
 			   </form>
               </div>
             </div>

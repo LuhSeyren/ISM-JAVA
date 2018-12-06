@@ -15,18 +15,17 @@
    
 
  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="/../../home.html">Insurance Manager Software</a>
-
+    <a class="navbar-brand" href="/ISM/home.jsp">Insurance Manager Software</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="../../1-venderApolice/1A-cliente/cliente.html">Venda </a>
+            <a class="nav-link" href="ControleVenderApoliceServlet?op=venda">Venda</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="../../2-alterarApolice/1-status/site.html">Alteração <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="ControleAlterarStatusServlet?op=status">Alteração</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../3-gerarRelatorio/1-periodo/site.html">Relatório</a>
+            <a class="nav-link" href="ControleGerarRelatorioServlet?op=relatorio">Relatório</a>
           </li>
         </ul>
       </div>
@@ -40,8 +39,8 @@
           <h1 class="jumbotron-heading">Meus Parabéns!!!</h1>
           <p class="lead text-muted">Você alterou o status da Apólice com Sucesso.</p>
           <p>
-            <a href="../../home.html" class="btn btn-primary my-2">Voltar ao Menu Inicial</a>
-            <a href="../1-status/site.html" class="btn btn-secondary my-2">Alterar outra Apólice</a>
+            <a href="/ISM/home.jsp" class="btn btn-primary my-2">Voltar ao Menu Inicial</a>
+            <a href="ControleAlterarStatusServlet?op=status" class="btn btn-secondary my-2">Alterar outra Apólice</a>
           </p>
         </div>
       </section>

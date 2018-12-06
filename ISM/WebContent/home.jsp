@@ -17,19 +17,19 @@
   <body class="text-center">
 
 
- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Insurance Manager Software</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/ISM/home.jsp">Insurance Manager Software</a>
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="1-venderApolice/1A - cliente/cliente.html">Venda </a>
+            <a class="nav-link" href="ControleVenderApoliceServlet?op=venda">Venda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="2-alterarApolice/1-status/site.html">Alteração <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="ControleAlterarStatusServlet?op=status">Alteração</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="3-gerarRelatorio/1-periodo/site.html">Relatório</a>
+            <a class="nav-link" href="ControleGerarRelatorioServlet?op=relatorio">Relatório</a>
           </li>
         </ul>
       </div>
@@ -44,7 +44,7 @@
         <h1 class="cover-heading">Insurance Manager Software</h1>
         <p class="lead">O seu software favorito para gerenciar os seus seguros. Nunca antes ser organizado foi tão fácil.</p>
         <p class="lead">
-          <a href="1-venderApolice/1A - cliente/cliente.html" class="btn btn-lg btn-secondary">Inicie uma Venda agora mesmo</a>
+          <a href="ControleVenderApoliceServlet?op=venda" class="btn btn-lg btn-secondary">Inicie uma Venda agora mesmo</a>
         </p>
       </main>
 
