@@ -54,15 +54,17 @@ public class ApoliceDAO {
 
   public Apolice buscarApolice(int matricula) {
 		Statement statement = null;
+		Statement statement2 = null;
 		String query = "SELECT * FROM Apolice WHERE Numero=" + Integer.toString(matricula);
 		try {
 			statement = connection.createStatement();
+			statement2 = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			while(resultSet.next()){
 				Apolice apolice = Apolice.construirApolice(resultSet);
 				String query2 = "Select Cliente.* from Apolice, Contrato, Cliente where "
 						+ "Apolice.Numero = Contrato.Numero and Cliente.CPF = Contrato.CPF and Apolice.Numero=" + Integer.toString(matricula);
-				ResultSet resultSet2 = statement.executeQuery(query2);
+				ResultSet resultSet2 = statement2.executeQuery(query2);
 				resultSet2.next();
 				Cliente cliente = Cliente.construirCliente(resultSet2);
 				apolice.setCliente(cliente);
@@ -114,15 +116,17 @@ public class ApoliceDAO {
   
   public ArrayList<Apolice> buscarPorData(String data_inicial, String data_final) {
 		Statement statement = null;
+		Statement statement2 = null;
 		ArrayList<Apolice> listaApolice = new ArrayList<Apolice>();
 		try {
 			statement = connection.createStatement();
+			statement2 = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM Apolice WHERE Vigencia BETWEEN DATE(\"" 
-					+ data_inicial + "\") AND DATE(\"" + data_final + "\") ORDER BY Numero");
+					+ data_inicial + "\") AND DATE(\"" + data_final + "\")");
 
 			while(resultSet.next()){			
 				Apolice apolice = Apolice.construirApolice(resultSet);
-				ResultSet resultSet2 = statement.executeQuery("Select Cliente.* from Apolice, Contrato, Cliente "
+				ResultSet resultSet2 = statement2.executeQuery("Select Cliente.* from Apolice, Contrato, Cliente "
 						+ "where Apolice.Numero = Contrato.Numero and Cliente.CPF = Contrato.CPF "
 						+ "and Apolice.Numero =" + Integer.toString(apolice.getNumero()));
 				resultSet2.next();

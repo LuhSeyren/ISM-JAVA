@@ -41,6 +41,7 @@
       <div class="jumbotron">
         <section class="jumbotron text-center">
           <h1>Apólices Encontradas</h1>
+          <br>
         <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
