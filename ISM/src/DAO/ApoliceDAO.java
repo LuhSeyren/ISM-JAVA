@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import ISM.Apolice;
+import ISM.Cliente;
 
 public class ApoliceDAO {
 	
@@ -59,6 +60,12 @@ public class ApoliceDAO {
 			ResultSet resultSet = statement.executeQuery(query);
 			while(resultSet.next()){
 				Apolice apolice = Apolice.construirApolice(resultSet);
+				String query2 = "Select Cliente.* from Apolice, Contrato, Cliente where "
+						+ "Apolice.Numero = Contrato.Numero and Cliente.CPF = Contrato.CPF and Apolice.Numero=" + Integer.toString(matricula);
+				ResultSet resultSet2 = statement.executeQuery(query2);
+				resultSet2.next();
+				Cliente cliente = Cliente.construirCliente(resultSet2);
+				apolice.setCliente(cliente);
 				return apolice;
 			}
 		} catch (SQLException e){
@@ -111,10 +118,16 @@ public class ApoliceDAO {
 		try {
 			statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM Apolice WHERE Vigencia BETWEEN DATE(\"" 
-					+ data_inicial + "\") AND DATE(\"" + data_final + "\")");
+					+ data_inicial + "\") AND DATE(\"" + data_final + "\") ORDER BY Numero");
 
-			while(resultSet.next()){
+			while(resultSet.next()){			
 				Apolice apolice = Apolice.construirApolice(resultSet);
+				ResultSet resultSet2 = statement.executeQuery("Select Cliente.* from Apolice, Contrato, Cliente "
+						+ "where Apolice.Numero = Contrato.Numero and Cliente.CPF = Contrato.CPF "
+						+ "and Apolice.Numero =" + Integer.toString(apolice.getNumero()));
+				resultSet2.next();
+				Cliente cliente = Cliente.construirCliente(resultSet2);
+				apolice.setCliente(cliente);
 				listaApolice.add(apolice);
 			}
 		}

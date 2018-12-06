@@ -54,7 +54,7 @@
               <div class="col-md-6 mb-3">
                 <label for="lastName">Cliente</label>
                 <% if (apolice.getCliente() != null) { %>
-               <h3> <%=apolice.getCliente().getNome() %></h3>
+               <h3> <%= apolice.getCliente().getNome() %></h3>
                <% } else { %>
                <h3>-</h3>
                <% } %>

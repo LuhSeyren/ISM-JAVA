@@ -46,7 +46,7 @@
               <thead>
                 <tr>
                   <th>Número</th>
-                  <th>Nome</th>
+                  <th>Nome do Cliente</th>
                   <th>Status</th>
                   <th>Vigência</th>
                   <th>Tipo Franquia</th>
