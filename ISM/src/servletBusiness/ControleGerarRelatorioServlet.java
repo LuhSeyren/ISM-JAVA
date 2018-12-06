@@ -58,10 +58,6 @@ public class ControleGerarRelatorioServlet extends HttpServlet {
 		String data_inicial  = request.getParameter("data_inicial");
 		String data_final  = request.getParameter("data_final");
 		
-		//print, para debug
-		System.out.println(data_inicial);
-		System.out.println(data_final);
-		
 		int consistencia = verificarConsistenciaPeriodo( data_inicial, data_final);
 		if(consistencia == ERROR){
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaGerarRelatorio/periodoInvalido.jsp");
@@ -71,7 +67,6 @@ public class ControleGerarRelatorioServlet extends HttpServlet {
 		ApoliceDAO apoliceDAO = new ApoliceDAO();
 		ArrayList<Apolice> apoliceList =  apoliceDAO.buscarPorData(data_inicial, data_final);
 		
-		System.out.println(apoliceList.size());
 		if(apoliceList.size()==0){
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/telaGerarRelatorio/apoliceNaoEncontrada.jsp");
 			requestDispatcher.forward(request, response);
